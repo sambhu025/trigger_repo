@@ -43,4 +43,11 @@ jobs:
       - name: printing something
         run: |
           echo "Hello ${{ github.event.inputs.name }}!"
-          echo "- in ${{ github.event.inputs.home }}!" 
+          echo "- in ${{ github.event.inputs.home }}!"
+      
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          repository: Vibaswan/Gihub_Actions_and_pyTest
+          event-type: my-event
