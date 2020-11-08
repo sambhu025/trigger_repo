@@ -50,6 +50,14 @@ jobs:
           GITHUB_CONTEXT: ${{ toJson(github) }}
         run: echo "$GITHUB_CONTEXT"
       
+      - name: Get version number
+        id: get_version
+        run: echo "::set-output name=version::$(cat input)"
+      
+      - name: print input
+        id: print_input
+        run: echo " ${{ steps.get_version.outputs.version }} "
+        
       #- name: Repository Dispatch
       #  uses: peter-evans/repository-dispatch@v1
       #  with:
